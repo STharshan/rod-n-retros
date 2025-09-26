@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const cardData = [
   {
@@ -78,7 +78,8 @@ const cardData = [
     afterImageUrl: "/o2.jpg",
     altText: "1963 Corvette Split Window",
     category: "Touch Ups & Smart Repairs",
-  }, {
+  },
+  {
     beforeImageUrl: "/p1.jpg",
     afterImageUrl: "/p2.jpg",
     altText: "1963 Corvette Split Window",
@@ -102,7 +103,6 @@ const cardData = [
     altText: "1963 Corvette Split Window",
     category: "Touch Ups & Smart Repairs",
   },
-
   {
     beforeImageUrl: "/w1.jpg",
     afterImageUrl: "/w2.jpg",
@@ -127,22 +127,55 @@ const cardData = [
     altText: "1963 Corvette Split Window",
     category: "Touch Ups & Smart Repairs",
   },
-
 ];
 
 const WorkGallery = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCard, setSelectedCard] = useState(null);
 
-  // Get unique categories from data
-  const categories = ["All", ...Array.from(new Set(cardData.map(card => card.category)))];
+  // Close modal on escape key
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedCard(null);
+      }
+    };
 
-  // Filter gallery items based on selected category
-  const filteredCards = selectedCategory === "All"
-    ? cardData
-    : cardData.filter(card => card.category === selectedCategory);
+    if (selectedCard) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedCard]);
+
+  const openModal = (card, index) => {
+    setSelectedCard({ ...card, index });
+  };
+
+  const closeModal = () => {
+    setSelectedCard(null);
+  };
+
+  const navigateModal = (direction) => {
+    if (!selectedCard) return;
+    
+    const currentIndex = selectedCard.index;
+    let newIndex;
+    
+    if (direction === 'next') {
+      newIndex = currentIndex === cardData.length - 1 ? 0 : currentIndex + 1;
+    } else {
+      newIndex = currentIndex === 0 ? cardData.length - 1 : currentIndex - 1;
+    }
+    
+    setSelectedCard({ ...cardData[newIndex], index: newIndex });
+  };
 
   return (
-    <section className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900 transition-colors">
+    <section className="py-12 sm:py-16 bg-gray-50 dark:bg-black transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
@@ -154,33 +187,18 @@ const WorkGallery = () => {
           </p>
         </div>
 
-        {/* Filters Section */}
-        <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 justify-center">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${selectedCategory === category
-                  ? "bg-[#8b1a1a] text-white shadow-md"
-                  : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600 hover:bg-[#8b1a1a] hover:text-white hover:border-[#8b1a1a]"
-                }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredCards.map((card, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
+          {cardData.map((card, index) => (
             <div
               key={index}
-              className="group bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700"
+              onClick={() => openModal(card, index)}
+              className="group bg-white dark:bg-black rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform hover:scale-105"
             >
               {/* Before/After Images Container */}
               <div className="relative overflow-hidden">
                 {/* Before/After Labels */}
-                <div className="absolute top-3 left-3 right-3 z-10 flex justify-between">
+                <div className="absolute top-2 left-2 right-2 z-10 flex justify-between">
                   <span className="bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
                     Before
                   </span>
@@ -193,25 +211,24 @@ const WorkGallery = () => {
                 <div className="flex">
                   {/* Before Image */}
                   <div className="w-1/2 relative overflow-hidden">
-                    <div className="aspect-[4/3]">
+                    <div className="aspect-square">
                       <img
                         src={card.beforeImageUrl}
                         alt={`Before - ${card.altText}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy"
                       />
                     </div>
-                    {/* Subtle overlay for before image */}
                     <div className="absolute inset-0 bg-black/10"></div>
                   </div>
 
                   {/* After Image */}
                   <div className="w-1/2 relative overflow-hidden">
-                    <div className="aspect-[4/3]">
+                    <div className="aspect-square">
                       <img
                         src={card.afterImageUrl}
                         alt={`After - ${card.altText}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         loading="lazy"
                       />
                     </div>
@@ -220,35 +237,108 @@ const WorkGallery = () => {
 
                 {/* Divider Line */}
                 <div className="absolute inset-y-0 left-1/2 w-0.5 bg-white/50 transform -translate-x-px"></div>
-              </div>
 
-              {/* Card Content */}
-              <div className="p-4 sm:p-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
-                    {/* {card.altText} */}
-                  </h3>
-                  <span className="inline-block bg-[#8b1a1a]/10 text-[#8b1a1a] dark:bg-[#fc8181]/10 dark:text-[#fc8181] px-2 py-1 rounded-md text-xs font-medium">
-                    {/* {card.category} */}
-                  </span>
+                {/* Click indicator */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                  <div className="bg-white/90 dark:bg-gray-800/90 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* No Results Message */}
-        {filteredCards.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-400 dark:text-gray-500 mb-4">
-              <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
+        {/* Modal */}
+        {selectedCard && (
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="relative bg-white dark:bg-gray-800 rounded-2xl max-w-6xl max-h-[90vh] w-full overflow-hidden shadow-2xl">
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-600">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  Restoration Progress
+                </h3>
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm text-gray-500 dark:text-gray-400">
+                    {selectedCard.index + 1} of {cardData.length}
+                  </span>
+                  <button
+                    onClick={closeModal}
+                    className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                  >
+                    <svg className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Modal Content */}
+              <div className="relative p-6">
+                {/* Navigation Buttons */}
+                <button
+                  onClick={() => navigateModal('prev')}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
+                >
+                  <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => navigateModal('next')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
+                >
+                  <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Large Images */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Before Image */}
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <span className="bg-red-500 text-white text-sm font-medium px-3 py-1 rounded-full">
+                        Before
+                      </span>
+                    </div>
+                    <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                      <img
+                        src={selectedCard.beforeImageUrl}
+                        alt={`Before - ${selectedCard.altText}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* After Image */}
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <span className="bg-green-500 text-white text-sm font-medium px-3 py-1 rounded-full">
+                        After
+                      </span>
+                    </div>
+                    <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                      <img
+                        src={selectedCard.afterImageUrl}
+                        alt={`After - ${selectedCard.altText}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Category Badge */}
+                <div className="mt-6 text-center">
+                  <span className="inline-block bg-[#8b1a1a]/10 text-[#8b1a1a] dark:bg-[#fc8181]/10 dark:text-[#fc8181] px-4 py-2 rounded-lg text-sm font-medium">
+                    {selectedCard.category}
+                  </span>
+                </div>
+              </div>
             </div>
-            <h3 className="text-sm font-medium text-gray-900 dark:text-white">No projects found</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-              Try selecting a different category to see our work.
-            </p>
           </div>
         )}
       </div>
