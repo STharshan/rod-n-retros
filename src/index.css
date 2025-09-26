@@ -1,7 +1,24 @@
 @import "tailwindcss";
 
+/* Enable dark mode based on class (which you can toggle in your app) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add any global styles you need for both light and dark mode */
 html, body {
   width: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+/* You can also add additional global styling for dark mode here if needed */
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark body {
+  background-color: black; /* Dark background */
+  color: #fff; /* Light text */
 }

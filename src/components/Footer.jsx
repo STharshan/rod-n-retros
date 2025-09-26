@@ -75,18 +75,44 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Contact Info</h4>
             <div className="space-y-2 text-primary-foreground/80">
-              <p>123 Restoration Lane</p>
-              <p>Classic City, CC 12345</p>
-              <p>(555) 123-4567</p>
-              <p>info@rodsnretros.com</p>
+              {/* Address Link */}
+              <p>
+                <a
+                  href="https://www.google.com/maps?q=123+Restoration+Lane,+Classic+City,+CC+12345"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline"
+                >
+                  123 Restoration Lane, <br />Classic City, CC 12345
+                </a>
+              </p>
+              {/* Phone Number Link */}
+              <p>
+                <a
+                  href="tel:+15551234567"
+                  className="text-white hover:underline"
+                >
+                  (555) 123-4567
+                </a>
+              </p>
+
+              {/* Email Address Link */}
+              <p>
+                <a
+                  href="mailto:info@rodsnretros.com"
+                  className="text-white hover:underline"
+                >
+                  info@rodsnretros.com
+                </a>
+              </p>
             </div>
           </div>
         </div>
-        
+
         {/* Footer Bottom */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
           <p>© 2025 Rods N Retros. All rights reserved.</p>
-           Powered by{" "}
+          Powered by{" "}
           <a
             href="https://www.ansely.co.uk/"
             target="_blank"
