@@ -56,10 +56,19 @@ function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white py-2 border-b border-gray-300 dark:border-gray-700 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo Section */}
-          <Link className="flex items-center space-x-2 flex-shrink-0" to="/">
-            <img src="logo.png" alt="Logo" className="h-20 w-25" />
-          </Link>
+
+          <a href="/" className="flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="SL Smart Repair logo"
+              className="h-20 w-25 block  dark:hidden"
+            />
+            <img
+              src="/darklogo.png"
+              alt="SL Smart Repair logo (dark)"
+              className="h-20 w-25  hidden dark:block"
+            />
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -104,7 +113,7 @@ function Navbar() {
           <div className="flex items-center gap-6">
             {/* Theme Toggle */}
             <ThemeToggle />
-            
+
             {/* Get Quote Button - Desktop only */}
             <Link
               to="/contact"
@@ -144,8 +153,8 @@ function Navbar() {
         <div className="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
           <div className="px-4 py-3 space-y-1 max-h-screen overflow-y-auto">
             {/* Home Link */}
-            <Link 
-              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+            <Link
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
               to="/"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -169,40 +178,40 @@ function Navbar() {
                   </svg>
                 )}
               </button>
-              
+
               {isMobileServicesOpen && (
                 <div className="mt-1 space-y-1 bg-gray-50 dark:bg-gray-700 rounded-md">
-                  <Link 
-                    onClick={handleServiceClick} 
-                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                  <Link
+                    onClick={handleServiceClick}
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors"
                     to="/services/bare-metal-resprays"
                   >
                     Bare Metal Resprays
                   </Link>
-                  <Link 
-                    onClick={handleServiceClick} 
-                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                  <Link
+                    onClick={handleServiceClick}
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors"
                     to="/services/full-restorations"
                   >
                     Full Restorations
                   </Link>
-                  <Link 
-                    onClick={handleServiceClick} 
-                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                  <Link
+                    onClick={handleServiceClick}
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors"
                     to="/services/touch-ups"
                   >
                     Touch Ups & Smart Repairs
                   </Link>
-                  <Link 
-                    onClick={handleServiceClick} 
-                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                  <Link
+                    onClick={handleServiceClick}
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors"
                     to="/services/welding-fabrication"
                   >
                     Welding & Fabrication
                   </Link>
-                  <Link 
-                    onClick={handleServiceClick} 
-                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                  <Link
+                    onClick={handleServiceClick}
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors"
                     to="/services/fiberglass-repairs"
                   >
                     Fiberglass Repairs
@@ -212,22 +221,22 @@ function Navbar() {
             </div>
 
             {/* Other Navigation Links */}
-            <Link 
-              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+            <Link
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
               to="/gallery"
               onClick={() => setIsMenuOpen(false)}
             >
               Gallery
             </Link>
-            <Link 
-              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+            <Link
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
               to="/about"
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </Link>
-            <Link 
-              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+            <Link
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
               to="/contact"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -236,8 +245,8 @@ function Navbar() {
 
             {/* Mobile Get Quote Button */}
             <div className="pt-4 border-t border-gray-200 dark:border-gray-600">
-              <Link 
-                className="block w-full px-4 py-3 text-center text-base font-semibold text-white bg-[#8b1a1a] hover:bg-[#7a1717] dark:bg-[#8b1a1a] dark:hover:bg-[#7a1717] rounded-lg transition-colors" 
+              <Link
+                className="block w-full px-4 py-3 text-center text-base font-semibold text-white bg-[#8b1a1a] hover:bg-[#7a1717] dark:bg-[#8b1a1a] dark:hover:bg-[#7a1717] rounded-lg transition-colors"
                 to="/contact"
                 onClick={() => setIsMenuOpen(false)}
               >
