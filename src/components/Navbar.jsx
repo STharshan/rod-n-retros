@@ -58,7 +58,7 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
           <Link className="flex items-center space-x-2 flex-shrink-0" to="/">
-            <img src="logo.png" alt="Logo" className="h-12 w-auto sm:h-16 md:h-20" />
+            <img src="logo.png" alt="Logo" className="h-20 w-25" />
           </Link>
 
           {/* Desktop Menu */}
@@ -101,7 +101,7 @@ function Navbar() {
           </div>
 
           {/* Right side buttons */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-6">
             {/* Theme Toggle */}
             <ThemeToggle />
             
