@@ -19,12 +19,12 @@ function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link className="text-foreground hover:text-accent transition-colors" to="/">Home</Link>
+            <Link className="text-foreground hover:text-[#8b1a1a] transition-colors" to="/">Home</Link>
             <div className="relative group">
-              <button className="text-foreground hover:text-accent transition-colors">
+              <button className="text-foreground hover:text-[#8b1a1a] transition-colors">
                 Services
               </button>
-              <div className="absolute top-full left-0 mt-2 w-64 bg-card border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="py-2">
                   <Link className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/bare-metal-resprays">
                     Bare Metal Resprays
@@ -44,10 +44,10 @@ function Navbar() {
                 </div>
               </div>
             </div>
-            <Link className="text-foreground hover:text-accent transition-colors" to="/gallery">Gallery</Link>
-            <Link className="text-foreground hover:text-accent transition-colors" to="/about">About</Link>
-            <Link className="text-foreground hover:text-accent transition-colors" to="/contact">Contact</Link>
-            <Link className="inline-flex bg-[#8b1a1a] py-1 px-4 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 bg-accent hover:bg-accent/90" to="/contact">Get Quote</Link>
+            <Link className="text-foreground hover:text-[#8b1a1a] transition-colors" to="/gallery">Gallery</Link>
+            <Link className="text-foreground hover:text-[#8b1a1a] transition-colors" to="/about">About</Link>
+            <Link className="text-foreground hover:text-[#8b1a1a] transition-colors" to="/contact">Contact</Link>
+            <Link className="inline-flex bg-[#8b1a1a] py-1 px-4 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 hover:bg-[#8b1a1a]/90" to="/contact">Get Quote</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -69,9 +69,9 @@ function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-300 absolute w-full top-16 left-0">
             <div className="flex flex-col py-4 px-4 space-y-2">
-              <Link className="px-4 py-2 text-lg text-foreground hover:text-accent transition-colors" to="/">Home</Link>
+              <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/">Home</Link>
               <div className="relative">
-                <button className="px-4 py-2 text-lg text-foreground hover:text-accent transition-colors">
+                <button className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors">
                   Services
                 </button>
                 <div className="absolute top-full left-0 mt-2 w-full bg-card border border-border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
@@ -94,10 +94,10 @@ function Navbar() {
                   </div>
                 </div>
               </div>
-              <Link className="px-4 py-2 text-lg text-foreground hover:text-accent transition-colors" to="/gallery">Gallery</Link>
-              <Link className="px-4 py-2 text-lg text-foreground hover:text-accent transition-colors" to="/about">About</Link>
-              <Link className="px-4 py-2 text-lg text-foreground hover:text-accent transition-colors" to="/contact">Contact</Link>
-              <Link className="px-4 py-2 text-lg bg-[#8b1a1a] w-40 text-center rounded-md font-medium  hover:text-accent transition-colors" to="/contact">Get Quote</Link>
+              <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/gallery">Gallery</Link>
+              <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/about">About</Link>
+              <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/contact">Contact</Link>
+              <Link className="px-4 py-2 text-lg bg-[#8b1a1a] w-40 text-center rounded-md font-medium  hover:text-[#8b1a1a] transition-colors" to="/contact">Get Quote</Link>
             </div>
           </div>
         )}
