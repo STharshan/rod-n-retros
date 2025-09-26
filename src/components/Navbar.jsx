@@ -1,75 +1,89 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom"; // Assuming you are using React Router for navigation
+import { Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false); // State for services dropdown
-  const [isDarkMode, setIsDarkMode] = useState(false); // State for Dark/Light mode
-  const servicesRef = useRef(null); // Reference to the services dropdown
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const servicesRef = useRef(null);
+  const mobileServicesRef = useRef(null);
 
-  // Close the services dropdown when clicking outside of it
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (servicesRef.current && !servicesRef.current.contains(event.target)) {
-        setIsServicesOpen(false); // Close dropdown when clicked outside
+        setIsServicesOpen(false);
+      }
+      if (mobileServicesRef.current && !mobileServicesRef.current.contains(event.target)) {
+        setIsMobileServicesOpen(false);
       }
     };
 
-    // Attach the event listener when the component is mounted
     document.addEventListener("click", handleClickOutside);
-
-    // Clean up the event listener when the component is unmounted
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
+  // Close mobile menu when window is resized to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false);
+        setIsMobileServicesOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleServiceClick = () => {
-    setIsServicesOpen(false); // Close the dropdown when a service is selected
+    setIsServicesOpen(false);
+    setIsMobileServicesOpen(false);
+    setIsMenuOpen(false); // Close mobile menu when service is selected
   };
 
-  // Toggle Dark Mode: Add/Remove the 'dark' class to the <html> element
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark"); // Add dark mode class
-    } else {
-      document.documentElement.classList.remove("dark"); // Remove dark mode class
-    }
-  }, [isDarkMode]); // Run this effect whenever isDarkMode changes
+  const handleMobileMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+    setIsMobileServicesOpen(false); // Close services when toggling main menu
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 py-2 border-b border-gray-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white py-2 border-b border-gray-300 dark:border-gray-700 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo Section */}
-          <Link className="flex items-center space-x-2" to="/">
-            <img src="logo.png" alt="Logo" className="h-20 w-30" />
+          <Link className="flex items-center space-x-2 flex-shrink-0" to="/">
+            <img src="logo.png" alt="Logo" className="h-12 w-auto sm:h-16 md:h-20" />
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link className="hover:text-[#8b1a1a] transition-colors" to="/">Home</Link>
+            <Link className="hover:text-[#8b1a1a] dark:hover:text-[#fc8181] transition-colors" to="/">Home</Link>
 
             {/* Services Dropdown for Large Screens */}
             <div className="relative group" ref={servicesRef}>
               <button
-                className="hover:text-[#8b1a1a] transition-colors flex items-center space-x-2"
-                onClick={() => setIsServicesOpen(!isServicesOpen)} // Toggle on button click
+                className="hover:text-[#8b1a1a] dark:hover:text-[#fc8181] transition-colors flex items-center space-x-2"
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
               >
                 <span>Services</span>
-                {/* Conditional Rendering of Icons */}
                 {isServicesOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                     <path d="M1 10l6-6 6 6"></path>
                   </svg>
                 ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                     <path d="M1 6l6 6 6-6"></path>
                   </svg>
                 )}
               </button>
               {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg">
+                <div className="absolute top-full left-0 mt-2 w-64 bg-white border border-gray-200 rounded-md shadow-lg dark:bg-gray-700 dark:border-gray-600">
                   <div className="py-2">
                     <Link onClick={handleServiceClick} className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/bare-metal-resprays">Bare Metal Resprays</Link>
                     <Link onClick={handleServiceClick} className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/full-restorations">Full Restorations</Link>
@@ -81,21 +95,43 @@ function Navbar() {
               )}
             </div>
 
-            <Link className="hover:text-[#8b1a1a] transition-colors" to="/gallery">Gallery</Link>
-            <Link className="hover:text-[#8b1a1a] transition-colors" to="/about">About</Link>
-            <Link className="hover:text-[#8b1a1a] transition-colors" to="/contact">Contact</Link>
+            <Link className="hover:text-[#8b1a1a] dark:hover:text-[#fc8181] transition-colors" to="/gallery">Gallery</Link>
+            <Link className="hover:text-[#8b1a1a] dark:hover:text-[#fc8181] transition-colors" to="/about">About</Link>
+            <Link className="hover:text-[#8b1a1a] dark:hover:text-[#fc8181] transition-colors" to="/contact">Contact</Link>
           </div>
 
-          {/* Dark Mode Toggle */}
+          {/* Right side buttons */}
           <div className="flex items-center gap-2">
-            <button onClick={() => setIsDarkMode(!isDarkMode)} className="p-2">
-              {isDarkMode ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-6 h-6">
-                  <path d="M12 2a9.93 9.93 0 0 1 7.071 2.93A9.97 9.97 0 0 1 22 12a9.97 9.97 0 0 1-2.929 7.071A9.93 9.93 0 0 1 12 22a9.93 9.93 0 0 1-7.071-2.93A9.97 9.97 0 0 1 2 12a9.97 9.97 0 0 1 2.929-7.071A9.93 9.93 0 0 1 12 2z" />
+            {/* Theme Toggle */}
+            <ThemeToggle />
+            
+            {/* Get Quote Button - Desktop only */}
+            <Link
+              to="/contact"
+              className="hidden md:inline-block rounded-xl px-4 py-2 text-sm font-semibold text-white bg-[#8b1a1a] hover:opacity-90 dark:bg-white dark:text-black transition-opacity"
+            >
+              Get Quote
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={handleMobileMenuToggle}
+              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#8b1a1a] transition-colors"
+              aria-expanded={isMenuOpen}
+              aria-label="Toggle navigation menu"
+            >
+              {isMenuOpen ? (
+                // Close icon
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <path d="M18 6L6 18"></path>
+                  <path d="M6 6L18 18"></path>
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-6 h-6">
-                  <circle cx="12" cy="12" r="5" />
+                // Hamburger icon
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <line x1="4" x2="20" y1="12" y2="12"></line>
+                  <line x1="4" x2="20" y1="6" y2="6"></line>
+                  <line x1="4" x2="20" y1="18" y2="18"></line>
                 </svg>
               )}
             </button>
@@ -103,58 +139,111 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Button */}
-      <div className="md:hidden">
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all h-8 rounded-md gap-1.5 px-3"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-menu h-6 w-6">
-            <line x1="4" x2="20" y1="12" y2="12"></line>
-            <line x1="4" x2="20" y1="6" y2="6"></line>
-            <line x1="4" x2="20" y1="18" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-300 absolute w-full top-16  left-0">
-          <div className="flex flex-col py-4 px-4 space-y-2">
-            <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/">Home</Link>
-            <div className="relative" ref={servicesRef}>
+        <div className="md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+          <div className="px-4 py-3 space-y-1 max-h-screen overflow-y-auto">
+            {/* Home Link */}
+            <Link 
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+              to="/"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+
+            {/* Services Dropdown for Mobile */}
+            <div className="relative" ref={mobileServicesRef}>
               <button
-                onClick={() => setIsServicesOpen(!isServicesOpen)} // Toggle services dropdown
-                className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors flex items-center space-x-2"
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors"
               >
                 <span>Services</span>
-                {/* Conditional Rendering of Icons */}
-                {isServicesOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4">
+                {isMobileServicesOpen ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                     <path d="M1 10l6-6 6 6"></path>
                   </svg>
                 ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                     <path d="M1 6l6 6 6-6"></path>
                   </svg>
                 )}
               </button>
-              {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
-                  <div className="py-2">
-                    <Link onClick={handleServiceClick} className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/bare-metal-resprays">Bare Metal Resprays</Link>
-                    <Link onClick={handleServiceClick} className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/full-restorations">Full Restorations</Link>
-                    <Link onClick={handleServiceClick} className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/touch-ups">Touch Ups & Smart Repairs</Link>
-                    <Link onClick={handleServiceClick} className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/welding-fabrication">Welding & Fabrication</Link>
-                    <Link onClick={handleServiceClick} className="block px-4 py-2 text-sm text-card-foreground hover:bg-muted transition-colors" to="/services/fiberglass-repairs">Fiberglass Repairs</Link>
-                  </div>
+              
+              {isMobileServicesOpen && (
+                <div className="mt-1 space-y-1 bg-gray-50 dark:bg-gray-700 rounded-md">
+                  <Link 
+                    onClick={handleServiceClick} 
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                    to="/services/bare-metal-resprays"
+                  >
+                    Bare Metal Resprays
+                  </Link>
+                  <Link 
+                    onClick={handleServiceClick} 
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                    to="/services/full-restorations"
+                  >
+                    Full Restorations
+                  </Link>
+                  <Link 
+                    onClick={handleServiceClick} 
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                    to="/services/touch-ups"
+                  >
+                    Touch Ups & Smart Repairs
+                  </Link>
+                  <Link 
+                    onClick={handleServiceClick} 
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                    to="/services/welding-fabrication"
+                  >
+                    Welding & Fabrication
+                  </Link>
+                  <Link 
+                    onClick={handleServiceClick} 
+                    className="block px-6 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors" 
+                    to="/services/fiberglass-repairs"
+                  >
+                    Fiberglass Repairs
+                  </Link>
                 </div>
               )}
             </div>
-            <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/gallery">Gallery</Link>
-            <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/about">About</Link>
-            <Link className="px-4 py-2 text-lg text-foreground hover:text-[#8b1a1a] transition-colors" to="/contact">Contact</Link>
-            <Link className="px-4 py-2 text-lg bg-[#8b1a1a] w-40 text-center rounded-md font-medium hover:text-[#8b1a1a] transition-colors" to="/contact">Get Quote</Link>
+
+            {/* Other Navigation Links */}
+            <Link 
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+              to="/gallery"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Gallery
+            </Link>
+            <Link 
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+              to="/about"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link 
+              className="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-[#8b1a1a] dark:hover:text-[#fc8181] hover:bg-gray-50 dark:hover:bg-gray-700 rounded-md transition-colors" 
+              to="/contact"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </Link>
+
+            {/* Mobile Get Quote Button */}
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-600">
+              <Link 
+                className="block w-full px-4 py-3 text-center text-base font-semibold text-white bg-[#8b1a1a] hover:bg-[#7a1717] dark:bg-[#8b1a1a] dark:hover:bg-[#7a1717] rounded-lg transition-colors" 
+                to="/contact"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Get Quote
+              </Link>
+            </div>
           </div>
         </div>
       )}

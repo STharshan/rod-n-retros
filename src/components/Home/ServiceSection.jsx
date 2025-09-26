@@ -6,31 +6,31 @@ const services = [
         title: 'Bare Metal Resprays',
         description: 'Complete paint removal and professional respray services for a flawless finish.',
         link: '/services/bare-metal-resprays',
-        icon: <Paintbrush className="w-6 h-6 text-[#8b1a1a]" />, // Lucide Paintbrush icon
+        icon: <Paintbrush className="w-6 h-6 text-[#8b1a1a] dark:text-white" />, // Lucide Paintbrush icon
     },
     {
         title: 'Full Restorations',
         description: 'Comprehensive restoration services bringing classic cars back to their former glory.',
         link: '/services/full-restorations',
-        icon: <Award className="w-6 h-6 text-[#8b1a1a]" />, // Lucide Award icon
+        icon: <Award className="w-6 h-6 text-[#8b1a1a] dark:text-white" />, // Lucide Award icon
     },
     {
         title: 'Touch Ups & Smart Repairs',
         description: 'Professional minor repair services to keep your vehicle looking pristine.',
         link: '/services/touch-ups',
-        icon: <Shield className="w-6 h-6 text-[#8b1a1a]" />, // Lucide Shield icon
+        icon: <Shield className="w-6 h-6 text-[#8b1a1a] dark:text-white" />, // Lucide Shield icon
     },
     {
         title: 'Welding & Fabrication',
         description: 'Expert metalwork and fabrication services for structural repairs and modifications.',
         link: '/services/touch-ups',
-        icon: <Wrench className="w-6 h-6 text-[#8b1a1a]" />, // Lucide Shield icon
+        icon: <Wrench className="w-6 h-6 text-[#8b1a1a] dark:text-white" />, // Lucide Shield icon
     },
     {
         title: 'Fiberglass Repairs',
         description: 'Specialized fiberglass repair and restoration for classic and modern vehicles.',
         link: '/services/touch-ups',
-        icon: <Shield  className="w-6 h-6 text-[#8b1a1a]" />, // Lucide Shield icon
+        icon: <Shield  className="w-6 h-6 text-[#8b1a1a] dark:text-white" />, // Lucide Shield icon
     },
     // Add more services as needed
 ];
@@ -50,7 +50,7 @@ const ServiceSection = () => {
                         <div key={index} className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-[#8b1a1a]/50">
                             <div className="p-8">
                                 <div className="space-y-4">
-                                    <div className="w-12 h-12 bg-[#8b1a1a]/10 rounded-lg flex items-center justify-center group-hover:bg-[#8b1a1a]/20 transition-colors">
+                                    <div className="w-12 h-12 bg-[#8b1a1a]/10 dark:bg-[#8b1a1a] dark:text-white rounded-lg flex items-center justify-center group-hover:bg-[#8b1a1a]/20 dark:group-hover:bg-[#8b1a1a] transition-colors">
                                         {service.icon}
                                     </div>
                                     <h3 className="text-xl font-semibold text-balance">{service.title}</h3>

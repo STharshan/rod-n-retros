@@ -80,7 +80,7 @@ const WorkGallery = () => {
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filters Section */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-8 justify-center">
           {["All", "Bare Metal Resprays", "Full Restorations", "Touch Ups", "Welding & Fabrication", "Fiberglass Repairs"].map((category) => (
             <button
               key={category}
@@ -88,7 +88,7 @@ const WorkGallery = () => {
               className={`inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all px-3 py-2 rounded-md focus:outline-none ${
                 selectedCategory === category
                   ? "bg-[#8b1a1a] text-white"
-                  : "bg-gray-200 text-primary-foreground border border-gray-200 hover:bg-[#8b1a1a] hover:text-white"
+                  : "bg-gray-200 text-primary-foreground border dark:text-black border-gray-200 hover:bg-[#8b1a1a] hover:text-white"
               }`}
             >
               {category}

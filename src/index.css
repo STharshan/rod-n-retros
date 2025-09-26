@@ -1,24 +1,50 @@
 @import "tailwindcss";
 
-/* Enable dark mode based on class (which you can toggle in your app) */
+/* Global body styles */
 html {
   scroll-behavior: smooth;
 }
 
-/* Add any global styles you need for both light and dark mode */
 html, body {
   width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
-/* You can also add additional global styling for dark mode here if needed */
 body {
   background-color: #fff;
   color: #000;
 }
 
+/* Dark mode styles */
 .dark body {
   background-color: black; /* Dark background */
-  color: #fff; /* Light text */
+  color: #edf2f7; /* Light text */
 }
+
+.dark .bg-white {
+  background-color: black; /* Dark background for white bg elements */
+}
+
+.dark .text-card-foreground {
+  color: #edf2f7; /* Light text for card foreground elements */
+}
+
+.dark .bg-muted {
+  background-color: black; /* Dark mode for muted backgrounds */
+}
+
+.dark {
+  background-color: #9b2c2c; /* Dark mode for Get Quote button */
+}
+
+.dark .text-foreground {
+  color: #edf2f7; /* Text color for foreground elements in dark mode */
+}
+
+.dark .text-muted {
+  color: #a0aec0; /* Muted text color for dark mode */
+}
+
+/* make `dark:` respond to .dark on <html> */
+@custom-variant dark (&:where(.dark, .dark *));  /* <-- add this line */
