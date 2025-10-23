@@ -14,7 +14,7 @@ const ContactSection = () => {
             {/* Call Now Button */}
             <a
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-primary-foreground shadow-xs h-10 rounded-md has-[&gt;svg]:px-4 bg-[#8b1a1a]  hover:bg-[#8b1a1a] /90 text-lg px-8"
-              href="tel: (555) 123-4567"
+              href="tel: +44 7521 224620"
             >
               <Phone className="w-5 h-5 mr-2" />
               Call Now
@@ -23,7 +23,7 @@ const ContactSection = () => {
             {/* Email Us Button */}
             <a
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border shadow-xs hover:bg-[#8b1a1a]  hover:text-white dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md has-[&gt;svg]:px-4 text-lg px-8 bg-transparent"
-              href="mailto:info@rodsnretros.com"
+              href="mailto:steelcityclassics@hotmail.com"
             >
               <Mail className="w-5 h-5 mr-2" />
               Email Us

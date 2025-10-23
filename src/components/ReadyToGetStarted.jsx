@@ -5,15 +5,18 @@ const ReadyToGetStarted = () => {
     <section className="py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8">
-          <h2 className="text-3xl lg:text-4xl font-bold text-balance">Ready to Get Started?</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-balance">
+            Ready to Get Started?
+          </h2>
           <p className="text-lg text-muted-foreground text-pretty">
             Contact us today for a free consultation and detailed quote for your project.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* 📞 Call Button */}
             <a
-              data-slot="button"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-primary-foreground shadow-xs h-10 rounded-md px-6 has-[&gt;svg]:px-4 bg-[#8b1a1a] hover:bg-[#8b1a1a]/90"
-              href="/contact"
+              href="tel:+44 7521 224620" // 👈 Replace this with your real phone number
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] text-primary-foreground shadow-xs h-10 rounded-md px-6 bg-[#8b1a1a] hover:bg-[#8b1a1a]/90 text-white"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -31,10 +34,11 @@ const ReadyToGetStarted = () => {
               </svg>
               Call for Quote
             </a>
+
+            {/* 📧 Email Button */}
             <a
-              data-slot="button"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm border-gray-200 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-[#8b1a1a] hover:text-white dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 has-[&gt;svg]:px-4"
-              href="/contact"
+              href="mailto:steelcityclassics@hotmail.com" // 👈 Replace with your real email
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm border-gray-200 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] border bg-background shadow-xs hover:bg-[#8b1a1a] hover:text-white dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 text-black dark:text-white"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

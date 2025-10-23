@@ -78,31 +78,31 @@ const Footer = () => {
               {/* Address Link */}
               <p>
                 <a
-                  href="https://www.google.com/maps?q=123+Restoration+Lane,+Classic+City,+CC+12345"
+                  href="https://maps.app.goo.gl/wKrkfNquHBcAZfe88"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:underline"
                 >
-                  123 Restoration Lane, <br />Classic City, CC 12345
+                  23A Mansfield Road,<br /> Sheffield, United Kingdom
                 </a>
               </p>
               {/* Phone Number Link */}
               <p>
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+44 7521 224620"
                   className="text-white hover:underline"
                 >
-                  (555) 123-4567
+                  +44 7521 224620
                 </a>
               </p>
 
               {/* Email Address Link */}
               <p>
                 <a
-                  href="mailto:info@rodsnretros.com"
+                  href="mailto:steelcityclassics@hotmail.com"
                   className="text-white hover:underline"
                 >
-                  info@rodsnretros.com
+                  steelcityclassics@hotmail.com
                 </a>
               </p>
             </div>
