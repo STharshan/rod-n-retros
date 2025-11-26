@@ -1,15 +1,15 @@
 import React from 'react'
-import Header from '../components/Home/Header'
-import ServiceSection from '../components/Home/ServiceSection'
 import ContactSection from '../components/Home/ContactSection'
 import ReviewsSlider from '../components/Home/Testimonials'
 import FindUs from '../components/Home/Findus'
+import HeroSection from '../components/Home/Header'
+import HeroCurasol from '../components/Home/ServiceSection'
 
 const Home = () => {
   return (
     <div>
-      <Header />
-      <ServiceSection />
+      <HeroSection />
+      <HeroCurasol />
       <ReviewsSlider />
       <ContactSection />
       <FindUs />

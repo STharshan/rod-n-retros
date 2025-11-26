@@ -111,8 +111,6 @@ function Navbar() {
 
           {/* Right side buttons */}
           <div className="flex items-center gap-6">
-            {/* Theme Toggle */}
-            <ThemeToggle />
 
             {/* Get Quote Button - Desktop only */}
             <Link
