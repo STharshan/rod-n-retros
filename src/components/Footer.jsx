@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="space-y-4">
             <img
-              src="/logo.jpeg"
+              src="/newlogo.png"
               alt="Rods N Retros Logo"
               className="h-20 w-30"
             />

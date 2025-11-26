@@ -60,12 +60,12 @@ function Navbar() {
           <a href="/" className="flex items-center gap-3">
             <img
               src="/logo.png"
-              alt="SL Smart Repair logo"
+              alt="logo"
               className="h-20 w-25 block  dark:hidden"
             />
             <img
               src="/darklogo.png"
-              alt="SL Smart Repair logo (dark)"
+              alt="logo"
               className="h-20 w-25  hidden dark:block"
             />
           </a>
