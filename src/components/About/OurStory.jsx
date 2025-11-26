@@ -28,23 +28,21 @@ const OurStory = () => {
           </div>
 
           {/* Stats Section */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="text-center p-6 bg-card rounded-lg border border-border/50">
-              <div className="text-3xl font-bold text-[#8b1a1a]  mb-2">25+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
-            </div>
-            <div className="text-center p-6 bg-card rounded-lg border border-border/50">
-              <div className="text-3xl font-bold text-[#8b1a1a]  mb-2">500+</div>
-              <div className="text-sm text-muted-foreground">Cars Restored</div>
-            </div>
-            <div className="text-center p-6 bg-card rounded-lg border border-border/50">
-              <div className="text-3xl font-bold text-[#8b1a1a]  mb-2">100%</div>
-              <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
-            </div>
-            <div className="text-center p-6 bg-card rounded-lg border border-border/50">
-              <div className="text-3xl font-bold text-[#8b1a1a]  mb-2">10k</div>
-              <div className="text-sm text-muted-foreground">Sq Ft Facility</div>
-            </div>
+          <div className="grid grid-cols-2 gap-6">
+            {[
+              { value: "25+", label: "Years Experience" },
+              { value: "500+", label: "Cars Restored" },
+              { value: "100%", label: "Satisfaction Rate" },
+              { value: "10k", label: "Sq Ft Facility" },
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="text-center p-6 bg-card rounded-xl shadow-md hover:shadow-[0_0_25px_rgba(139,26,26,0.7)] transition-shadow duration-300"
+              >
+                <div className="text-3xl font-bold text-[#8b1a1a] mb-2">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
