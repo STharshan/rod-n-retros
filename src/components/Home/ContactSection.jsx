@@ -1,12 +1,13 @@
 import React from 'react';
-import { Phone, Mail } from 'lucide-react'; // Import Lucide icons
+import { Phone, Mail } from 'lucide-react';
 
 const ContactSection = () => {
   return (
     <section className="py-20 bg-muted/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Card container */}
-        <div className="bg-white dark:bg-black rounded-2xl shadow-lg p-10 text-center transition-all hover:shadow-2xl hover:-translate-y-1 ease-out">
+        {/* Card container with glow effect */}
+        <div className="bg-white dark:bg-[#1c1c1c] rounded-2xl p-10 text-center transition-all
+                        shadow-lg hover:shadow-[0_0_40px_rgba(139,26,26,0.8)] hover:-translate-y-1 ease-out">
           <div className="space-y-8">
             <h2 className="text-4xl lg:text-5xl font-bold text-balance">
               Ready to Restore Your Classic?
@@ -28,7 +29,7 @@ const ContactSection = () => {
               {/* Email Us Button */}
               <a
                 href="mailto:steelcityclassics@hotmail.com"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all shadow-xs h-10 rounded-md border bg-transparent hover:bg-[#8b1a1a] hover:text-white text-lg px-8"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all shadow-xs h-10 rounded-md border border-[#8b1a1a] text-[#8b1a1a] hover:bg-[#8b1a1a] hover:text-white text-lg px-8"
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Email Us

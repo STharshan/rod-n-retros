@@ -1,12 +1,13 @@
 import React from 'react';
-import { Quote, Info } from 'lucide-react'; // Import Lucide icons
+import { Quote, Info } from 'lucide-react';
 
 const CallToAction = () => {
   return (
     <section className="py-16 bg-muted/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Card container */}
-        <div className="bg-white dark:bg-black rounded-2xl shadow-lg p-10 text-center transition-all hover:shadow-2xl hover:-translate-y-1 ease-out">
+        {/* Card container with glow effect */}
+        <div className="bg-white dark:bg-[#1c1c1c] rounded-2xl p-10 text-center transition-all 
+                        shadow-lg hover:shadow-[0_0_40px_rgba(139,26,26,0.8)] hover:-translate-y-1 ease-out">
           <div className="space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-balance">
               Ready to Start Your Project?
@@ -29,7 +30,7 @@ const CallToAction = () => {
               {/* Learn About Us Button */}
               <a
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all shadow-xs h-10 rounded-md border bg-transparent hover:bg-[#8b1a1a] hover:text-white text-black dark:text-white"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all shadow-xs h-10 rounded-md px-6 border border-[#8b1a1a] text-[#8b1a1a] hover:bg-[#8b1a1a] hover:text-white"
                 aria-label="Learn more about us"
               >
                 <Info className="w-4 h-4" />
