@@ -11,12 +11,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "aos/dist/aos.css";
 
-const BRAND = {
-  primary: "#8b1a1a",
-  primaryHover: "#a02020",
-  text: "#1f2937",
-};
-
 const testimonials = [
   {
     text: "Absolutely lovely guys spot on",
@@ -64,9 +58,9 @@ function InitialAvatar({ name }) {
     <div
       className="w-12 h-12 min-w-[3rem] rounded-full flex items-center justify-center font-semibold text-base"
       style={{
-        backgroundColor: "rgba(139, 26, 26, 0.1)",
-        border: `1px solid ${BRAND.primary}`,
-        color: BRAND.primary,
+        backgroundColor: "#ffd700", // gold
+        border: `1px solid #8b0000`, // dark red
+        color: "#8b0000", // dark red initials
       }}
     >
       {initials}
@@ -90,16 +84,17 @@ export default function ReviewsSlider() {
       id="testimonial"
     >
       <style jsx>{`
+        /* Swiper pagination bullets */
         .swiper-pagination-bullet {
           background-color: transparent;
-          border: 2px solid ${BRAND.primary};
+          border: 2px solid #ffd700; /* golden border */
           width: 10px;
           height: 10px;
           opacity: 1;
           margin: 0 6px !important;
         }
         .swiper-pagination-bullet-active {
-          background-color: ${BRAND.primary};
+          background-color: #ffd700; /* golden active */
         }
       `}</style>
 
@@ -142,48 +137,45 @@ export default function ReviewsSlider() {
                 <article
                   className="flex flex-col justify-between h-full w-full min-h-[320px] rounded-2xl border p-6 shadow-md 
                              transition-all hover:shadow-lg hover:-translate-y-1 active:scale-[0.98] cursor-pointer
-                             bg-[#f9fafb] dark:bg-gray-900 border-gray-200 dark:border-gray-700 group relative"
+                             bg-[#8b0000] border-[#b22222] group relative"
                   data-aos="zoom-in"
                   data-aos-delay={idx * 100}
                 >
-                  <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-[#8b1a1a]/5 via-transparent to-transparent" />
+                  <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-[#ffd700]/20 via-transparent to-transparent" />
 
                   <div>
                     <div className="flex items-center gap-3">
                       <InitialAvatar name={t.name} />
                       <div className="flex-1">
-                        <div className="flex items-center gap-1 text-[#8b1a1a]">
+                        <div className="flex items-center gap-1 text-[#ffd700]">
                           {Array.from({ length: 5 }).map((_, i) => (
-                            <FiStar key={i} className="w-4 h-4 fill-[#8b1a1a]" />
+                            <FiStar key={i} className="w-4 h-4 fill-[#ffd700]" />
                           ))}
                         </div>
-                        <div className="mt-1 text-xs text-gray-700 dark:text-gray-400">
+                        <div className="mt-1 text-xs text-[#ffd700]">
                           Verified review
                         </div>
                       </div>
                     </div>
 
-                    <p className="mt-4 text-sm md:text-base text-gray-900 dark:text-gray-300 leading-relaxed">
+                    <p className="mt-4 text-sm md:text-base text-[#ffd700] leading-relaxed">
                       “{t.text}”
                     </p>
                   </div>
 
                   <div className="mt-5 flex items-center justify-between">
-                    <div
-                      className="font-semibold"
-                      style={{ color: BRAND.primary }}
-                    >
+                    <div className="font-semibold" style={{ color: "#ffd700" }}>
                       {t.name}
                     </div>
                     <div
                       className="flex items-center gap-1 px-2 py-1 rounded-full border text-sm"
                       style={{
-                        borderColor: `${BRAND.primary}99`,
-                        color: BRAND.primary,
+                        borderColor: "#ffd70099",
+                        color: "#ffd700",
                       }}
                     >
                       {Array.from({ length: 5 }).map((_, i) => (
-                        <FiStar key={i} className="w-3.5 h-3.5 fill-[#8b1a1a]" />
+                        <FiStar key={i} className="w-3.5 h-3.5 fill-[#ffd700]" />
                       ))}
                     </div>
                   </div>
@@ -192,12 +184,12 @@ export default function ReviewsSlider() {
             ))}
           </Swiper>
 
-          {/* ✅ Responsive Navigation Arrows */}
+          {/* Navigation Arrows */}
           <button
             className="swiper-button-prev-custom absolute top-1/2 -translate-y-1/2 left-0 
                        -translate-x-4 sm:-translate-x-8 md:-translate-x-12 
-                       w-10 h-10 flex items-center justify-center rounded-full border border-[#8b1a1a]
-                       text-[#8b1a1a] bg-white/80 backdrop-blur-sm hover:bg-[#8b1a1a] hover:text-white
+                       w-10 h-10 flex items-center justify-center rounded-full border border-[#ffd700]
+                       text-[#ffd700] bg-[#8b0000]/20 backdrop-blur-sm hover:bg-[#ffd700] hover:text-[#8b0000]
                        active:scale-95 transition-all shadow-md z-30"
           >
             <BsArrowLeft className="w-5 h-5" />
@@ -206,8 +198,8 @@ export default function ReviewsSlider() {
           <button
             className="swiper-button-next-custom absolute top-1/2 -translate-y-1/2 right-0 
                        translate-x-4 sm:translate-x-8 md:translate-x-12 
-                       w-10 h-10 flex items-center justify-center rounded-full border border-[#8b1a1a]
-                       text-[#8b1a1a] bg-white/80 backdrop-blur-sm hover:bg-[#8b1a1a] hover:text-white
+                       w-10 h-10 flex items-center justify-center rounded-full border border-[#ffd700]
+                       text-[#ffd700] bg-[#8b0000]/20 backdrop-blur-sm hover:bg-[#ffd700] hover:text-[#8b0000]
                        active:scale-95 transition-all shadow-md z-30"
           >
             <BsArrowRight className="w-5 h-5" />
@@ -215,11 +207,7 @@ export default function ReviewsSlider() {
         </div>
 
         {/* CTA Button */}
-        <div
-          className="flex justify-center mt-2"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
+        <div className="flex justify-center mt-2" data-aos="fade-up" data-aos-delay="400">
           <a
             href="https://www.google.com/search?sca_esv=1543fb6b43c5b04c&rlz=1C5CHFA_enCA1132CA1132&sxsrf=AE3TifNAGCq-gSVZnVezscnsNKVnD8a3vw:1762328627645&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E4snfBRxoD5VA9WINOudYTdIuXxOtThT3lNqgfKM-3NYIioq-Tqs17Vgumvijedpuqw-iK9h4aFzCFu9UStSdLdL5YOK&q=Rods+n+Retros+Reviews&sa=X&ved=2ahUKEwiz-s_ewdqQAxVqy6ACHZINOWMQ0bkNegQIIhAD&biw=1366&bih=633&dpr=1"
             target="_blank"
