@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const TouchWhatWeInclude = () => {
   const cardItems = [
@@ -26,13 +26,15 @@ const TouchWhatWeInclude = () => {
             <div
               key={index}
               data-slot="card"
-              className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm border-border/50"
+              className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border border-transparent
+                         shadow-md transition-all duration-300 ease-out
+                         hover:border-[#ff0000] hover:shadow-[0_0_20px_rgba(255,0,0,0.6)]
+                         active:border-[#ff0000] active:shadow-[0_0_20px_rgba(255,0,0,0.6)]
+                         cursor-pointer"
             >
-              <div data-slot="card-content" className="p-6">
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-[#8b1a1a] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-card-foreground">{item}</p>
-                </div>
+              <div data-slot="card-content" className="p-6 flex items-start space-x-3">
+                <div className="w-2 h-2 bg-[#8b1a1a] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-card-foreground">{item}</p>
               </div>
             </div>
           ))}
