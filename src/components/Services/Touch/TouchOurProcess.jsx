@@ -35,7 +35,13 @@ const TouchOurProcess = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step) => (
-            <div key={step.number} className="text-center space-y-4">
+            <div
+              key={step.number}
+              className="text-center space-y-4 p-6 rounded-xl border border-transparent shadow-md
+                         transition-all duration-300 ease-out cursor-pointer
+                         hover:border-[#ff0000] hover:shadow-[0_0_20px_rgba(255,0,0,0.6)]
+                         active:border-[#ff0000] active:shadow-[0_0_20px_rgba(255,0,0,0.6)]"
+            >
               <div className="w-12 h-12 bg-[#8b1a1a] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto">
                 {step.number}
               </div>
