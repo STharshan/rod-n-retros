@@ -2,26 +2,10 @@ import React from 'react';
 import { Award, Shield, Users, Clock } from 'lucide-react'; // Import Lucide icons
 
 const values = [
-  {
-    title: "Excellence",
-    description: "We strive for perfection in every project, no matter the size or scope.",
-    icon: <Award className="w-8 h-8 text-[#8b1a1a] dark:text-white" />,
-  },
-  {
-    title: "Integrity",
-    description: "Honest communication, transparent pricing, and reliable service.",
-    icon: <Shield className="w-8 h-8 text-[#8b1a1a] dark:text-white" />,
-  },
-  {
-    title: "Craftsmanship",
-    description: "Traditional techniques combined with modern technology and tools.",
-    icon: <Users className="w-8 h-8 text-[#8b1a1a] dark:text-white" />,
-  },
-  {
-    title: "Dedication",
-    description: "Committed to delivering projects on time and within budget.",
-    icon: <Clock className="w-8 h-8 text-[#8b1a1a] dark:text-white" />,
-  },
+  { title: "Excellence", description: "We strive for perfection in every project, no matter the size or scope.", icon: <Award className="w-8 h-8 text-[#8b1a1a] dark:text-white" /> },
+  { title: "Integrity", description: "Honest communication, transparent pricing, and reliable service.", icon: <Shield className="w-8 h-8 text-[#8b1a1a] dark:text-white" /> },
+  { title: "Craftsmanship", description: "Traditional techniques combined with modern technology and tools.", icon: <Users className="w-8 h-8 text-[#8b1a1a] dark:text-white" /> },
+  { title: "Dedication", description: "Committed to delivering projects on time and within budget.", icon: <Clock className="w-8 h-8 text-[#8b1a1a] dark:text-white" /> },
 ];
 
 const OurValues = () => {
@@ -42,7 +26,8 @@ const OurValues = () => {
             <div
               key={index}
               data-slot="card"
-              className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm text-center border-border/50 hover:shadow-lg transition-shadow"
+              className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl py-6 shadow-md text-center 
+                         hover:shadow-[0_0_25px_rgba(139,26,26,0.7)] transition-shadow duration-300"
             >
               <div data-slot="card-content" className="p-8">
                 <div className="w-16 h-16 bg-[#8b1a1a]/10 dark:bg-[#8b1a1a] rounded-full flex items-center justify-center mx-auto mb-4">

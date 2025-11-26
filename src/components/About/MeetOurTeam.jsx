@@ -1,34 +1,10 @@
 import React from 'react';
 
 const teamMembers = [
-  {
-    name: "Mike Rodriguez",
-    role: "Master Craftsman & Owner",
-    experience: "25+ years",
-    specialization: "Frame-off restorations and custom paint",
-    image: "/empty.svg",
-  },
-  {
-    name: "Sarah Thompson",
-    role: "Paint Specialist",
-    experience: "15+ years",
-    specialization: "Color matching and precision spray work",
-    image: "/empty.svg",
-  },
-  {
-    name: "David Chen",
-    role: "Mechanical Restoration",
-    experience: "20+ years",
-    specialization: "Engine rebuilds and drivetrain work",
-    image: "/empty.svg",
-  },
-  {
-    name: "Lisa Martinez",
-    role: "Interior Specialist",
-    experience: "12+ years",
-    specialization: "Upholstery and trim restoration",
-    image: "/empty.svg",
-  },
+  { name: "Mike Rodriguez", role: "Master Craftsman & Owner", experience: "25+ years", specialization: "Frame-off restorations and custom paint", image: "/empty.svg" },
+  { name: "Sarah Thompson", role: "Paint Specialist", experience: "15+ years", specialization: "Color matching and precision spray work", image: "/empty.svg" },
+  { name: "David Chen", role: "Mechanical Restoration", experience: "20+ years", specialization: "Engine rebuilds and drivetrain work", image: "/empty.svg" },
+  { name: "Lisa Martinez", role: "Interior Specialist", experience: "12+ years", specialization: "Upholstery and trim restoration", image: "/empty.svg" },
 ];
 
 const MeetOurTeam = () => {
@@ -49,7 +25,8 @@ const MeetOurTeam = () => {
             <div
               key={index}
               data-slot="card"
-              className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm border-border/50 overflow-hidden"
+              className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl py-6 shadow-md 
+                         hover:shadow-[0_0_25px_rgba(139,26,26,0.7)] transition-shadow duration-300 overflow-hidden"
             >
               <div className="aspect-square bg-muted">
                 <img
@@ -60,7 +37,7 @@ const MeetOurTeam = () => {
               </div>
               <div data-slot="card-content" className="p-6">
                 <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
-                <p className="text-[#8b1a1a]  font-medium mb-2">{member.role}</p>
+                <p className="text-[#8b1a1a] font-medium mb-2">{member.role}</p>
                 <p className="text-sm text-muted-foreground mb-3">{member.experience}</p>
                 <p className="text-sm text-muted-foreground text-pretty">{member.specialization}</p>
               </div>
