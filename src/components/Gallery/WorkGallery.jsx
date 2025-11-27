@@ -1,35 +1,37 @@
+"use client";
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Use this if using react-router, otherwise remove
 
 const cardData = [
   {
-    beforeImageUrl: "/a1.jpg",
-    afterImageUrl: "/a3.jpg",
+    beforeImageUrl: "/brae-3.jpeg",
+    afterImageUrl: "/brae-1.jpeg",
     altText: "1967 Ford Mustang Fastback",
-    category: "Bare Metal Resprays",
+    category: "Complete bare metal respray",
   },
   {
-    beforeImageUrl: "/c1.jpg",
-    afterImageUrl: "/c3.jpg",
+    beforeImageUrl: "/respray-1.jpeg",
+    afterImageUrl: "/respray-2.jpeg",
     altText: "1969 Chevrolet Camaro SS",
-    category: "Full Restorations",
+    category: "Complete outer body respray",
   },
   {
-    beforeImageUrl: "/d1.jpg",
-    afterImageUrl: "/d3.jpg",
+    beforeImageUrl: "/nut-and-bolt -1.jpeg",
+    afterImageUrl: "/nut-and-bolt -2.jpeg",
     altText: "1970 Plymouth 'Cuda",
-    category: "Full Restorations",
+    category: "Full nut and bolt restoration/fiberglass bodykit professionally fitted and blended in/bare metal respray",
   },
   {
-    beforeImageUrl: "/h1.jpg",
-    afterImageUrl: "/h3.jpg",
+    beforeImageUrl: "/fiberglass4-2.jpeg",
+    afterImageUrl: "/fiberglass4-1.jpeg",
     altText: "1963 Corvette Split Window",
-    category: "Touch Ups & Smart Repairs",
+    category: "Full fiberglass bodykit professionally fitted and blended in/Full nut and bolt restoration/bare metal respray",
   },
   {
-    beforeImageUrl: "/i1.jpg",
-    afterImageUrl: "/i2.jpg",
+    beforeImageUrl: "/strip5-3.jpeg",
+    afterImageUrl: "/strip5-1.jpeg",
     altText: "1963 Corvette Split Window",
-    category: "Touch Ups & Smart Repairs",
+    category: "Complete strip and colour change inside and out",
   },
   {
     beforeImageUrl: "/j1.jpg",
@@ -129,48 +131,37 @@ const cardData = [
   },
 ];
 
+
 const WorkGallery = () => {
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // Close modal on escape key
+  // Close modal on escape
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setSelectedCard(null);
-      }
+      if (event.key === "Escape") setSelectedCard(null);
     };
-
     if (selectedCard) {
-      document.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
     }
-
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
   }, [selectedCard]);
 
-  const openModal = (card, index) => {
-    setSelectedCard({ ...card, index });
-  };
-
-  const closeModal = () => {
-    setSelectedCard(null);
-  };
+  const openModal = (card, index) => setSelectedCard({ ...card, index });
+  const closeModal = () => setSelectedCard(null);
 
   const navigateModal = (direction) => {
     if (!selectedCard) return;
-    
     const currentIndex = selectedCard.index;
     let newIndex;
-    
-    if (direction === 'next') {
+    if (direction === "next") {
       newIndex = currentIndex === cardData.length - 1 ? 0 : currentIndex + 1;
     } else {
       newIndex = currentIndex === 0 ? cardData.length - 1 : currentIndex - 1;
     }
-    
     setSelectedCard({ ...cardData[newIndex], index: newIndex });
   };
 
@@ -188,65 +179,55 @@ const WorkGallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {cardData.map((card, index) => (
             <div
               key={index}
               onClick={() => openModal(card, index)}
-              className="group bg-white dark:bg-black rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform hover:scale-105"
+              className="group relative bg-white dark:bg-black rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform hover:scale-105"
             >
-              {/* Before/After Images Container */}
-              <div className="relative overflow-hidden">
-                {/* Before/After Labels */}
-                <div className="absolute top-2 left-2 right-2 z-10 flex justify-between">
-                  <span className="bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
+              {/* Images */}
+              <div className="relative flex flex-col sm:flex-row">
+                <div className="w-full sm:w-1/2 aspect-square relative overflow-hidden">
+                  <img
+                    src={card.beforeImageUrl}
+                    alt={`Before - ${card.altText}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/10"></div>
+                  <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
                     Before
                   </span>
-                  <span className="bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
+                </div>
+                <div className="w-full sm:w-1/2 aspect-square relative overflow-hidden">
+                  <img
+                    src={card.afterImageUrl}
+                    alt={`After - ${card.altText}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
                     After
                   </span>
                 </div>
-
-                {/* Images Grid */}
-                <div className="flex">
-                  {/* Before Image */}
-                  <div className="w-1/2 relative overflow-hidden">
-                    <div className="aspect-square">
-                      <img
-                        src={card.beforeImageUrl}
-                        alt={`Before - ${card.altText}`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-black/10"></div>
-                  </div>
-
-                  {/* After Image */}
-                  <div className="w-1/2 relative overflow-hidden">
-                    <div className="aspect-square">
-                      <img
-                        src={card.afterImageUrl}
-                        alt={`After - ${card.altText}`}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Divider Line */}
                 <div className="absolute inset-y-0 left-1/2 w-0.5 bg-white/50 transform -translate-x-px"></div>
-
-                {/* Click indicator */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                  <div className="bg-white/90 dark:bg-gray-800/90 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                    </svg>
-                  </div>
-                </div>
               </div>
+
+              {/* Hover Category Badge */}
+              {/* <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 w-100 text-center transition-opacity duration-300">
+                {card.link ? (
+                  <Link
+                    to={card.link}
+                    onClick={(e) => e.stopPropagation()}
+                    className="bg-[#8b1a1a] text-white  py-1 rounded-full text-sm font-medium shadow-md hover:bg-[#a78b50] transition-colors"
+                  >
+                    {card.category}
+                  </Link>
+                ) : (
+                  <span className="bg-[#8b1a1a] text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
+                    {card.category}
+                  </span>
+                )}
+              </div> */}
             </div>
           ))}
         </div>
@@ -254,7 +235,7 @@ const WorkGallery = () => {
         {/* Modal */}
         {selectedCard && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="relative bg-white dark:bg-gray-800 rounded-2xl max-w-6xl max-h-[90vh] w-full overflow-hidden shadow-2xl">
+            <div className="relative bg-white dark:bg-gray-800 rounded-2xl w-full max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-6xl max-h-[90vh] overflow-auto shadow-2xl">
               {/* Modal Header */}
               <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-600">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -276,68 +257,57 @@ const WorkGallery = () => {
               </div>
 
               {/* Modal Content */}
-              <div className="relative p-6">
-                {/* Navigation Buttons */}
-                <button
-                  onClick={() => navigateModal('prev')}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
-                >
-                  <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-
-                <button
-                  onClick={() => navigateModal('next')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
-                >
-                  <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-
-                {/* Large Images */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Before Image */}
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <span className="bg-red-500 text-white text-sm font-medium px-3 py-1 rounded-full">
-                        Before
-                      </span>
-                    </div>
-                    <div className="aspect-[4/3] rounded-lg overflow-hidden">
-                      <img
-                        src={selectedCard.beforeImageUrl}
-                        alt={`Before - ${selectedCard.altText}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-
-                  {/* After Image */}
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <span className="bg-green-500 text-white text-sm font-medium px-3 py-1 rounded-full">
-                        After
-                      </span>
-                    </div>
-                    <div className="aspect-[4/3] rounded-lg overflow-hidden">
-                      <img
-                        src={selectedCard.afterImageUrl}
-                        alt={`After - ${selectedCard.altText}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+              <div className="p-4 sm:p-6 flex flex-col md:flex-row gap-4 md:gap-6">
+                <div className="flex-1 space-y-2">
+                  <span className="bg-red-500 text-white text-sm font-medium px-3 py-1 rounded-full">
+                    Before
+                  </span>
+                  <div className="w-full aspect-video mt-5 rounded-lg overflow-hidden">
+                    <img
+                      src={selectedCard.beforeImageUrl}
+                      alt={`Before - ${selectedCard.altText}`}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
-
-                {/* Category Badge */}
-                <div className="mt-6 text-center">
-                  <span className="inline-block bg-[#8b1a1a]/10 text-[#8b1a1a] dark:bg-[#fc8181]/10 dark:text-[#fc8181] px-4 py-2 rounded-lg text-sm font-medium">
-                    {selectedCard.category}
+                <div className="flex-1 space-y-2">
+                  <span className="bg-green-500 text-white text-sm font-medium px-3 py-1 rounded-full">
+                    After
                   </span>
+                  <div className="w-full aspect-video mt-5 rounded-lg overflow-hidden">
+                    <img
+                      src={selectedCard.afterImageUrl}
+                      alt={`After - ${selectedCard.altText}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
+
+              {/* Category Badge */}
+              <div className="text-center px-4">
+                <span className="inline-block bg-[#8b1a1a] text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  {selectedCard.category}
+                </span>
+              </div>
+
+              {/* Navigation */}
+              <button
+                onClick={() => navigateModal("prev")}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
+              >
+                <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => navigateModal("next")}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
+              >
+                <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         )}
