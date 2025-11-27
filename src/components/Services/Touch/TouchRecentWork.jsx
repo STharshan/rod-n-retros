@@ -2,12 +2,12 @@ import React from 'react';
 
 const TouchRecentWork = () => {
   const images = [
-    { src: '/t1.jpg', alt: 'Bare Metal Resprays example 1' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 2' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 3' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 4' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 5' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 6' },
+    { src: '/Front end touch up and respray15-1.jpeg', alt: 'Bare Metal Resprays example 1' },
+    { src: '/Front end touch up and respray15-3.jpeg', alt: 'Bare Metal Resprays example 2' },
+    { src: '/Front end touch up and respray15-2.jpeg', alt: 'Bare Metal Resprays example 3' },
+    { src: '/Small repairs and touch ups16-2.jpeg', alt: 'Bare Metal Resprays example 4' },
+    { src: '/Small repairs and touch ups16-1.jpeg', alt: 'Bare Metal Resprays example 5' },
+    { src: '/Small repairs and touch ups16-3.jpeg', alt: 'Bare Metal Resprays example 6' },
   ];
 
   return (

@@ -2,12 +2,12 @@ import React from 'react';
 
 const RestorationRecentWork = () => {
   const images = [
-    { src: '/f1.jpg', alt: 'Bare Metal Resprays example 1' },
-    { src: '/f2.jpg', alt: 'Bare Metal Resprays example 2' },
-    { src: '/f3.jpg', alt: 'Bare Metal Resprays example 3' },
-    { src: '/f4.jpg', alt: 'Bare Metal Resprays example 4' },
-    { src: '/f6.jpg', alt: 'Bare Metal Resprays example 5' },
-    { src: '/f5.jpg', alt: 'Bare Metal Resprays example 6' },
+    { src: '/Bare metal respray14-3.jpeg', alt: 'Bare Metal Resprays example 1' },
+    { src: '/Bare metal respray14-1.jpeg', alt: 'Bare Metal Resprays example 2' },
+    { src: '/Bare metal respray14-2.jpeg', alt: 'Bare Metal Resprays example 3' },
+    { src: '/ground up restoration11-3.jpeg', alt: 'Bare Metal Resprays example 4' },
+    { src: '/ground up restoration11-2.jpeg', alt: 'Bare Metal Resprays example 5' },
+    { src: '/ground up restoration11-1.jpeg', alt: 'Bare Metal Resprays example 6' },
   ];
 
   return (

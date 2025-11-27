@@ -2,11 +2,11 @@ import React from 'react';
 
 const RecentWork = () => {
   const images = [
-    { src: '/respray-1.jpeg', alt: 'Bare Metal Resprays example 1' },
-    { src: '/respray-2.jpeg', alt: 'Bare Metal Resprays example 2' },
-    { src: '/r3.jpg', alt: 'Bare Metal Resprays example 3' },
-    { src: '/r4.jpg', alt: 'Bare Metal Resprays example 4' },
-    { src: '/r6.jpg', alt: 'Bare Metal Resprays example 5' },
+    { src: '/brae-2.jpeg', alt: 'Bare Metal Resprays example 1' },
+    { src: '/brae-3.jpeg', alt: 'Bare Metal Resprays example 2' },
+    { src: '/brae-1.jpeg', alt: 'Bare Metal Resprays example 3' },
+    { src: '/Full bare metal respray 24-1.jpeg', alt: 'Bare Metal Resprays example 4' },
+    { src: '/Full bare metal respray 24-2.jpeg', alt: 'Bare Metal Resprays example 5' },
     { src: '/r5.jpg', alt: 'Bare Metal Resprays example 6' },
   ];
 

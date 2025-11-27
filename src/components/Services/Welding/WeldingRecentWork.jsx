@@ -2,12 +2,12 @@ import React from 'react';
 
 const WeldingRecentWork = () => {
   const images = [
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 1' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 2' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 3' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 4' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 5' },
-    { src: '/empty.svg', alt: 'Bare Metal Resprays example 6' },
+    { src: '/strip5-3.jpeg', alt: 'Bare Metal Resprays example 1' },
+    { src: '/strip5-2.jpeg', alt: 'Bare Metal Resprays example 2' },
+    { src: '/strip5-1.jpeg', alt: 'Bare Metal Resprays example 3' },
+    { src: '/brae-2.jpeg', alt: 'Bare Metal Resprays example 4' },
+    { src: '/brae-3.jpeg', alt: 'Bare Metal Resprays example 5' },
+    { src: '/brae-1.jpeg', alt: 'Bare Metal Resprays example 6' },
   ];
 
   return (

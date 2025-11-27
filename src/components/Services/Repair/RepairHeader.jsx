@@ -57,12 +57,12 @@ const RepairHeader = () => {
               </a>
             </div>
           </div>
-          <div className="relative">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-muted">
+          <div className="relative rounded-2xl">
+            <div className="aspect-[4/3]  overflow-hidden bg-muted">
               <img
-                src="/empty.svg"
+                src="/Full bare metal respray 24-2.jpeg"
                 alt="Bare Metal Resprays"
-                className="w-full h-full object-cover"
+                className="w-full h-full rounded-2xl object-cover"
               />
             </div>
           </div>

@@ -60,7 +60,7 @@ const BareMetalResprays = () => {
           <div className="relative">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-muted">
               <img
-                src="/respray.jpg"
+                src="/brae-3.jpeg"
                 alt="Bare Metal Resprays"
                 className="w-full h-full object-cover"
               />

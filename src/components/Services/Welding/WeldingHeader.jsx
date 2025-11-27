@@ -60,7 +60,7 @@ const WeldingHeader = () => {
           <div className="relative">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-muted">
               <img
-                src="/empty.svg"
+                src="/Bare metal respray14-2.jpeg"
                 alt="Bare Metal Resprays"
                 className="w-full h-full object-cover"
               />
