@@ -24,8 +24,8 @@ const HeroCurasol = () => {
             title: "Bare Metal Resprays",
             snippet:
                 "Complete paint removal and professional respray services for a flawless finish.",
-            beforeImage: "/a1.jpg",
-            afterImage: "/a3.jpg",
+            beforeImage: "/brae-3.jpeg",
+            afterImage: "/brae-1.jpeg",
             link: "/services/bare-metal-resprays",
             category: "Respray",
         },
