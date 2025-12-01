@@ -48,3 +48,12 @@ body {
 
 /* make `dark:` respond to .dark on <html> */
 @custom-variant dark (&:where(.dark, .dark *));  /* <-- add this line */
+
+/* Hide scrollbar for all browsers */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

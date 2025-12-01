@@ -59,15 +59,11 @@ function Navbar() {
 
           <a href="/" className="flex items-center gap-3">
             <img
-              src="/logo.png"
-              alt="logo"
-              className="h-20 w-25 block  dark:hidden"
-            />
-            <img
               src="/darklogo.png"
               alt="logo"
-              className="h-20 w-25  hidden dark:block"
+              className="h-20 w-25 block  "
             />
+          
           </a>
 
           {/* Desktop Menu */}

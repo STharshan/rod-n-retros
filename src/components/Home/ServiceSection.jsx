@@ -192,7 +192,7 @@ const HeroCurasol = () => {
                             >
                                 <div
                                     className={`bg-zinc-900 rounded-3xl overflow-hidden transition-all duration-500 border ${index === activeIndex
-                                        ? "border-zinc-700 shadow-2xl shadow-red-600/20"
+                                        ? "border-zinc-700 shadow-2xl shadow-[#8b1a1a]/20"
                                         : "border-zinc-800 shadow-lg"
                                         }`}
                                     style={{ minHeight: "400px" }}
@@ -227,7 +227,7 @@ const HeroCurasol = () => {
                                         {/* Footer */}
                                         <div className="flex items-center justify-between pt-4 border-t border-zinc-800">
                                             <div className="flex items-center gap-2">
-                                                <div className="w-1 h-8 bg-red-600 rounded-full"></div>
+                                                <div className="w-1 h-8 bg-[#8b1a1a] rounded-full"></div>
                                                 <span className="text-white font-medium text-sm">
                                                     {project.category}
                                                 </span>
@@ -258,7 +258,7 @@ const HeroCurasol = () => {
                                 key={index}
                                 onClick={() => scrollToCard(index)}
                                 className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${index === activeIndex
-                                    ? "bg-red-600 w-6 sm:w-8"
+                                    ? "bg-[#8b1a1a] w-6 sm:w-8"
                                     : "bg-gray-600 w-1.5 sm:w-2 hover:bg-gray-500"
                                     }`}
                             />
