@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Use this if using react-router, otherwise remove
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const cardData = [
   {
@@ -150,18 +151,18 @@ const cardData = [
 ];
 
 
+
 const WorkGallery = () => {
   const [selectedCard, setSelectedCard] = useState(null);
 
-  // Close modal on escape
   useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") setSelectedCard(null);
-    };
+    const handleKeyDown = (e) => e.key === "Escape" && setSelectedCard(null);
+
     if (selectedCard) {
       document.addEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "hidden";
     }
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
@@ -169,163 +170,140 @@ const WorkGallery = () => {
   }, [selectedCard]);
 
   const openModal = (card, index) => setSelectedCard({ ...card, index });
-  const closeModal = () => setSelectedCard(null);
 
   const navigateModal = (direction) => {
     if (!selectedCard) return;
-    const currentIndex = selectedCard.index;
-    let newIndex;
-    if (direction === "next") {
-      newIndex = currentIndex === cardData.length - 1 ? 0 : currentIndex + 1;
-    } else {
-      newIndex = currentIndex === 0 ? cardData.length - 1 : currentIndex - 1;
-    }
+    let newIndex =
+      direction === "next"
+        ? (selectedCard.index + 1) % cardData.length
+        : (selectedCard.index - 1 + cardData.length) % cardData.length;
+
     setSelectedCard({ ...cardData[newIndex], index: newIndex });
   };
 
   return (
-    <section className="py-12 sm:py-16 bg-gray-50 dark:bg-black transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <section className="py-10 sm:py-14 lg:py-16 bg-gray-50  dark:bg-black transition-colors">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Title */}
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
             Our Work Gallery
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
+          <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm sm:text-base max-w-xl mx-auto">
             See the amazing transformations of classic cars through our restoration process
           </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {/* Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
           {cardData.map((card, index) => (
             <div
               key={index}
               onClick={() => openModal(card, index)}
-              className="group relative bg-white dark:bg-black rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 cursor-pointer transform hover:scale-105"
+              className="group bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-gray-200 dark:border-gray-700 cursor-pointer transform hover:scale-[1.03]"
             >
-              {/* Images */}
-              <div className="relative flex flex-col sm:flex-row">
+              <div className="flex flex-col sm:flex-row relative">
+                {/* BEFORE IMAGE */}
                 <div className="w-full sm:w-1/2 aspect-square relative overflow-hidden">
                   <img
                     src={card.beforeImageUrl}
                     alt={`Before - ${card.altText}`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/10"></div>
-                  <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
+                  <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-full shadow">
                     Before
                   </span>
                 </div>
+
+                {/* AFTER IMAGE */}
                 <div className="w-full sm:w-1/2 aspect-square relative overflow-hidden">
                   <img
                     src={card.afterImageUrl}
                     alt={`After - ${card.altText}`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                   />
-                  <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded-full shadow-sm">
+                  <span className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 text-xs rounded-full shadow">
                     After
                   </span>
                 </div>
-                <div className="absolute inset-y-0 left-1/2 w-0.5 bg-white/50 transform -translate-x-px"></div>
-              </div>
 
-              {/* Hover Category Badge */}
-              {/* <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 w-100 text-center transition-opacity duration-300">
-                {card.link ? (
-                  <Link
-                    to={card.link}
-                    onClick={(e) => e.stopPropagation()}
-                    className="bg-[#8b1a1a] text-white  py-1 rounded-full text-sm font-medium shadow-md hover:bg-[#a78b50] transition-colors"
-                  >
-                    {card.category}
-                  </Link>
-                ) : (
-                  <span className="bg-[#8b1a1a] text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
-                    {card.category}
-                  </span>
-                )}
-              </div> */}
+                <div className="absolute inset-y-0 left-1/2 w-[1px] bg-white/60"></div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Modal */}
+        {/* MODAL */}
         {selectedCard && (
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="relative bg-white dark:bg-gray-800 rounded-2xl w-full max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-6xl max-h-[90vh] overflow-auto shadow-2xl">
-              {/* Modal Header */}
-              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-600">
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-[999] flex items-center justify-center p-4">
+            <div className="relative bg-white dark:bg-gray-800 rounded-2xl w-full max-w-6xl max-h-[92vh] overflow-auto shadow-2xl">
+
+              {/* Header */}
+              <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                   Our Work Gallery
                 </h3>
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-500 dark:text-gray-400">
-                    {selectedCard.index + 1} of {cardData.length}
+
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-gray-500 dark:text-gray-300">
+                    {selectedCard.index + 1} / {cardData.length}
                   </span>
                   <button
-                    onClick={closeModal}
-                    className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                    onClick={() => setSelectedCard(null)}
+                    className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition"
                   >
-                    <svg className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+                    <X className="w-5 h-5 text-gray-900 dark:text-white" />
                   </button>
                 </div>
               </div>
 
               {/* Modal Content */}
-              <div className="p-4 sm:p-6 flex flex-col md:flex-row gap-4 md:gap-6">
-                <div className="flex-1 space-y-2">
-                  <span className="bg-red-500 text-white text-sm font-medium px-3 py-1 rounded-full">
-                    Before
-                  </span>
-                  <div className="w-full aspect-video mt-5 rounded-lg overflow-hidden">
+              <div className="p-4 sm:p-6 flex flex-col lg:flex-row gap-6">
+                {/* BEFORE IMAGE */}
+                <div className="flex-1">
+                  <span className="bg-red-500 text-white px-3 py-1 rounded text-sm">Before</span>
+                  <div className="w-full mt-3 rounded-lg overflow-hidden aspect-video">
                     <img
                       src={selectedCard.beforeImageUrl}
-                      alt={`Before - ${selectedCard.altText}`}
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
-                <div className="flex-1 space-y-2">
-                  <span className="bg-green-500 text-white text-sm font-medium px-3 py-1 rounded-full">
-                    After
-                  </span>
-                  <div className="w-full aspect-video mt-5 rounded-lg overflow-hidden">
+
+                {/* AFTER IMAGE */}
+                <div className="flex-1">
+                  <span className="bg-green-500 text-white px-3 py-1 rounded text-sm">After</span>
+                  <div className="w-full mt-3 rounded-lg overflow-hidden aspect-video">
                     <img
                       src={selectedCard.afterImageUrl}
-                      alt={`After - ${selectedCard.altText}`}
                       className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Category Badge */}
-              <div className="text-center px-4">
-                <span className="inline-block bg-[#8b1a1a] text-white px-4 py-2 rounded-lg text-sm font-medium">
+              {/* CATEGORY TITLE */}
+              <div className="text-center p-4 pt-0">
+                <span className="inline-block bg-[#8b1a1a] text-white px-4 py-2 rounded-lg text-sm sm:text-base font-medium break-words max-w-[90%]">
                   {selectedCard.category}
                 </span>
               </div>
 
-              {/* Navigation */}
+              {/* Navigation Arrows */}
               <button
                 onClick={() => navigateModal("prev")}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
+                className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/70 dark:bg-gray-700/70 p-3 rounded-full"
               >
-                <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <ChevronLeft className="w-6 h-6 text-gray-900 dark:text-white" />
               </button>
               <button
                 onClick={() => navigateModal("next")}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-700 rounded-full shadow-lg transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/70 dark:bg-gray-700/70 p-3 rounded-full"
               >
-                <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <ChevronRight className="w-6 h-6 text-gray-900 dark:text-white" />
               </button>
+
             </div>
           </div>
         )}
