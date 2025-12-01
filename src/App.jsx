@@ -11,6 +11,9 @@ import Restoration from "./pages/Service/Restoration";
 import Touch from "./pages/Service/Touch";
 import Welding from "./pages/Service/Welding";
 import Repair from "./pages/Service/Repair";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsConditions from "./components/Term";
+import GDPRConsent from "./components/GDPRButton";
 
 function App() {
   return (
@@ -27,10 +30,11 @@ function App() {
         <Route path="/services/touch-ups" element={<Touch />} />
         <Route path="/services/welding-fabrication" element={<Welding />} />
         <Route path="/services/fiberglass-repairs" element={<Repair />} />
-        {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-conditions" element={<TermsConditions />} /> */}
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsConditions />} />
       </Routes>
       <Footer />
+      <GDPRConsent />
     </Router>
   );
 }

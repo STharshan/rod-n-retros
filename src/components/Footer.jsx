@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -110,17 +111,41 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
-          <p>© 2025 Rods N Retros. All rights reserved.</p>
-          Powered by{" "}
-          <a
-            href="https://www.ansely.co.uk/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold hover:underline text-white "
-          >
-            Ansely
-          </a>
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 Rods N Retros. All rights reserved.</p>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-2 flex flex-col sm:flex-row justify-center items-center gap-3 text-center font-semibold text-gray-400">
+          {/* Left: Terms & Privacy */}
+          <div className="flex gap-4 text-sm">
+            <Link
+              to="/terms"
+              className="text-gray-400 hover:text-[#8b1a1a]  transition duration-300"
+            >
+              Terms & Conditions
+            </Link>
+            <span className="text-gray-500">|</span>
+            <Link
+              to="/privacy"
+              className="text-gray-400 hover:text-[#8b1a1a]  transition duration-300"
+            >
+              Privacy Policy
+            </Link>
+          </div>
+
+          {/* Center: Powered by Ansely (unchanged) */}
+          <p className="text-center font-semibold text-gray-400">
+            Powered by{" "}
+            <a
+              href="https://www.ansely.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#8b1a1a]  hover:underline"
+            >
+              Ansely
+            </a>
+          </p>
         </div>
       </div>
     </footer>
