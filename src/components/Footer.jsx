@@ -52,7 +52,7 @@ const Footer = () => {
 
           {/* Company Section */}
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
+            <h4 className="font-semibold mb-4">Quick Link</h4>
             <ul className="space-y-2 text-primary-foreground/80">
               <li>
                 <a className="hover:text-primary-foreground transition-colors" href="/about">
@@ -101,6 +101,7 @@ const Footer = () => {
               <p>
                 <a
                   href="mailto:steelcityclassics@hotmail.com"
+                  target='_blank'
                   className="text-white hover:underline"
                 >
                   steelcityclassics@hotmail.com
