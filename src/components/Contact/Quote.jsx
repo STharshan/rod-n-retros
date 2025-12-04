@@ -221,6 +221,7 @@ Vehicle: ${formData.vehicle || "N/A"}%0A
                                 >
                                     <Send className="w-4 h-4 mr-2" /> Send Message
                                 </button>
+                                  <p className="text-xs text-center dark:text-gray-300">By submitting this form, you agree to us processing your details to respond to your enquiry. Your information is handled securely and in line with our Privacy Policy.</p>
                             </form>
                         </div>
                     </div>
