@@ -100,11 +100,11 @@ const Footer = () => {
               {/* Email Address Link */}
               <p>
                 <a
-                  href="mailto:steelcityclassics@hotmail.com"
+                  href="mailto:RodsnRetros@hotmail.com"
                   target='_blank'
                   className="text-white hover:underline"
                 >
-                  steelcityclassics@hotmail.com
+                  RodsnRetros@hotmail.com
                 </a>
               </p>
             </div>

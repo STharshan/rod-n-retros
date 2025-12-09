@@ -12,9 +12,9 @@ const contactInfo = [
     {
         icon: <Mail className="w-5 h-5 text-[#8b1a1a]" />,
         title: "Email",
-        detail: "steelcityclassics@hotmail.com",
+        detail: "RodsnRetros@hotmail.com",
         description: "We respond within 24 hours",
-        link: "mailto:steelcityclassics@hotmail.com",
+        link: "mailto:RodsnRetros@hotmail.com",
     },
     {
         icon: <MapPin className="w-5 h-5 text-[#8b1a1a]" />,

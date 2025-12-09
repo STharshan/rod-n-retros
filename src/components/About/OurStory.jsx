@@ -17,13 +17,13 @@ const OurStory = () => {
           {/* Text Content */}
           <div className="space-y-6">
             <p className="text-muted-foreground text-pretty leading-relaxed">
-              Founded in 1999 by master craftsman Mike Rodriguez, Rods N Retros began as a dream to preserve automotive history. What started as weekend projects in a small garage has grown into one of the region's most respected restoration shops.
+              Founded in 1999 by master craftsman Shane Mason, Rods N Retros began as a dream to preserve automotive history. What started as weekend projects in a small garage has grown into one of the region's most respected restoration shops.
             </p>
             <p className="text-muted-foreground text-pretty leading-relaxed">
-              Our team combines decades of experience with cutting-edge technology to deliver restorations that exceed expectations. We've had the privilege of working on everything from barn finds to concours-level show cars, each project receiving the same meticulous attention to detail.
+              Our team combines decades of experience with traditional equipment and tools to deliver restorations that exceed expectations. We've had the privilege of working on everything from barn finds to concours-level show cars, each project receiving the same meticulous attention to detail.
             </p>
             <p className="text-muted-foreground text-pretty leading-relaxed">
-              Today, we operate from a 10,000 square foot facility equipped with the latest tools and technology, but our commitment to traditional craftsmanship and personal service remains unchanged.
+              Today, we operate from a 10,000 square foot facility in the heart of Sheffield, but our commitment to traditional craftsmanship and personal service remains unchanged.
             </p>
           </div>
 

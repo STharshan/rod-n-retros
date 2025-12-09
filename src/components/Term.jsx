@@ -78,7 +78,7 @@ const TermsConditions = () => {
                       </p>
                       <div className="text-white">
                           <p><strong>Rods N Retros</strong></p>
-                          <p>Email: <a href="mailto:steelcityclassics@hotmail.com" className="text-[#8b1a1a]  hover:underline">steelcityclassics@hotmail.com</a></p>
+                          <p>Email: <a href="mailto:RodsnRetros@hotmail.com" className="text-[#8b1a1a]  hover:underline">RodsnRetros@hotmail.com</a></p>
                           <p>Phone: +44 7521 224620</p>
                           <p>Address: 23A Mansfield Road, Sheffield, United Kingdom</p>
                       </div>

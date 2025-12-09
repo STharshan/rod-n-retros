@@ -40,7 +40,7 @@ const ReadyToGetStarted = () => {
 
               {/* 📧 Email Button */}
               <a
-                href="mailto:steelcityclassics@hotmail.com"
+                href="mailto:RodsnRetros@hotmail.com"
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all shadow-xs h-10 rounded-md px-6 border border-[#8b1a1a] text-[#8b1a1a] hover:bg-[#8b1a1a] hover:text-white text-lg"
               >
                 <svg
