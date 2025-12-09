@@ -20,9 +20,9 @@ const MeetOurTeam = () => {
   return (
     <section className="py-16 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold">Meet Our Team</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Skilled craftsmen and restoration specialists dedicated to bringing your classic car back to life.
@@ -30,15 +30,22 @@ const MeetOurTeam = () => {
         </div>
 
         {/* Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="
+          grid 
+          grid-cols-1 
+          sm:grid-cols-2 
+          gap-8 
+          max-w-4xl 
+          mx-auto 
+        ">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              data-slot="card"
-              className="bg-card text-card-foreground rounded-xl shadow-md overflow-hidden 
-                         hover:shadow-[0_0_25px_rgba(139,26,26,0.7)] transition-shadow duration-300"
+              className="bg-card text-card-foreground rounded-xl shadow-md 
+                         overflow-hidden hover:shadow-[0_0_25px_rgba(139,26,26,0.7)] 
+                         transition-shadow duration-300"
             >
-              {/* Image Box */}
+              {/* Image */}
               <div className="w-full aspect-square bg-muted">
                 <img
                   src={member.image}
@@ -47,14 +54,16 @@ const MeetOurTeam = () => {
                 />
               </div>
 
-              {/* Content */}
+              {/* Details */}
               <div className="p-6 space-y-2">
                 <h3 className="text-lg font-semibold">{member.name}</h3>
                 <p className="text-[#8b1a1a] font-medium">{member.role}</p>
                 <p className="text-sm text-muted-foreground">{member.experience}</p>
 
                 {member.specialization && (
-                  <p className="text-sm text-muted-foreground">{member.specialization}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {member.specialization}
+                  </p>
                 )}
               </div>
             </div>
