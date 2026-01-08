@@ -12,7 +12,7 @@ const teamMembers = [
     name: "Declan Mason",
     role: "Body and Paint specialist",
     experience: "15+ years",
-    image: "/empty.svg",
+    image: "/declan.jpeg",
   },
 ];
 

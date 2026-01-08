@@ -23,27 +23,27 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-primary-foreground/80">
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/services/bare-metal-resprays">
+                <a className="hover:text-gray-300 transition-colors" href="/services/bare-metal-resprays">
                   Bare Metal Resprays
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/services/full-restorations">
+                <a className="hover:text-gray-300 transition-colors" href="/services/full-restorations">
                   Full Restorations
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/services/touch-ups">
+                <a className="hover:text-gray-300 transition-colors" href="/services/touch-ups">
                   Touch Ups &amp; Smart Repairs
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/services/welding-fabrication">
+                <a className="hover:text-gray-300 transition-colors" href="/services/welding-fabrication">
                   Welding &amp; Fabrication
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/services/fiberglass-repairs">
+                <a className="hover:text-gray-300 transition-colors" href="/services/fiberglass-repairs">
                   Fiberglass Repairs
                 </a>
               </li>
@@ -53,19 +53,19 @@ const Footer = () => {
           {/* Company Section */}
           <div>
             <h4 className="font-semibold mb-4">Quick Link</h4>
-            <ul className="space-y-2 text-primary-foreground/80">
+            <ul className="space-y-2 text-gray-300/80">
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/about">
+                <a className="hover:text-gray-300 transition-colors" href="/about">
                   About Us
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/gallery">
+                <a className="hover:text-gray-300 transition-colors" href="/gallery">
                   Gallery
                 </a>
               </li>
               <li>
-                <a className="hover:text-primary-foreground transition-colors" href="/contact">
+                <a className="hover:text-gray-300 transition-colors" href="/contact">
                   Contact
                 </a>
               </li>
