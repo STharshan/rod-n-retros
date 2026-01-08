@@ -16,7 +16,7 @@ const HeroSection = () => {
             </video>
 
             {/* Overlay (for readability) */}
-            <div className="absolute inset-0 bg-black -z-10"></div>
+            <div className="absolute inset-0 -z-10"></div>
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-15">
                 <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">

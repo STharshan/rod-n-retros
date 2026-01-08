@@ -8,6 +8,9 @@ const WeldingRecentWork = () => {
     { src: '/brae-2.jpeg', alt: 'Bare Metal Resprays example 4' },
     { src: '/brae-3.jpeg', alt: 'Bare Metal Resprays example 5' },
     { src: '/brae-1.jpeg', alt: 'Bare Metal Resprays example 6' },
+    { src: '/welding2.jpeg', alt: 'Bare Metal Resprays example 6' },
+    { src: '/welding1.jpeg', alt: 'Bare Metal Resprays example 6' },
+    { src: '/welding3.jpeg', alt: 'Bare Metal Resprays example 6' },
   ];
 
   return (

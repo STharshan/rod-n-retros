@@ -8,6 +8,7 @@ const RestorationRecentWork = () => {
     { src: '/ground up restoration11-3.jpeg', alt: 'Bare Metal Resprays example 4' },
     { src: '/ground up restoration11-2.jpeg', alt: 'Bare Metal Resprays example 5' },
     { src: '/ground up restoration11-1.jpeg', alt: 'Bare Metal Resprays example 6' },
+    { src: '/full.jpeg', alt: 'Bare Metal Resprays example 6' },
   ];
 
   return (
