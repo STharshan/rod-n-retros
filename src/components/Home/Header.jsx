@@ -5,14 +5,15 @@ const HeroSection = () => {
         <section className="relative pt-16 pb-20 h-[100vh] overflow-hidden">
             {/* Background Video */}
             <video
+                className="absolute inset-0 w-full h-full object-cover"
+                src="/bg.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover "
+                poster="/fall.png"
+                onError={(e) => (e.currentTarget.style.display = "none")}
             >
-                <source src="/bg.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
             </video>
 
             {/* Overlay (for readability) */}

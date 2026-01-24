@@ -24,6 +24,7 @@ const RecentWork = () => {
             <div key={index} className="aspect-[4/3] rounded-lg overflow-hidden bg-muted">
               <img
                 src={image.src}
+                loading="lazy"
                 alt={image.alt}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />

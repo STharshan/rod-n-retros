@@ -1,10 +1,5 @@
-"use client";
-
 import React, { useRef, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import "aos/dist/aos.css";
 
 const testimonials = [
   {
@@ -46,13 +41,7 @@ export default function Testimonials() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 100,
-    });
 
-    // ✅ Center the first card after mount
     const timeout = setTimeout(() => {
       const container = scrollRef.current;
       if (container && container.children.length > 0) {
@@ -145,6 +134,7 @@ export default function Testimonials() {
                       <img
                         src="test.png"
                         alt={testimonial.name}
+                        loading="lazy"
                         className="w-22 mt-3 h-10 mx-auto object-cover"
                       />
                     </div>

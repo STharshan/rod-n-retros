@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -16,10 +20,21 @@ import TermsConditions from "./components/Term";
 import GDPRConsent from "./components/GDPRButton";
 
 function App() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      easing: "ease-in-out",
+      once: true,      // animate only once
+      offset: 120,
+    });
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element={<Gallery />} />
@@ -33,6 +48,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsConditions />} />
       </Routes>
+
       <Footer />
       <GDPRConsent />
     </Router>

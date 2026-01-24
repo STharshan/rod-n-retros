@@ -1,22 +1,11 @@
-"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom";
 
 const HeroCurasol = () => {
     const [activeIndex, setActiveIndex] = useState(1);
     const scrollContainerRef = useRef(null);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
-            once: true,
-        });
-    }, []);
 
     const projects = [
         {
@@ -203,6 +192,7 @@ const HeroCurasol = () => {
                                             <img
                                                 src={project.beforeImage}
                                                 alt={`${project.title} before`}
+                                                loading="lazy"
                                                 className="w-full h-full object-cover opacity-70"
                                             />
                                         </div>
@@ -210,6 +200,7 @@ const HeroCurasol = () => {
                                             <img
                                                 src={project.afterImage}
                                                 alt={`${project.title} after`}
+                                                loading="lazy"
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>

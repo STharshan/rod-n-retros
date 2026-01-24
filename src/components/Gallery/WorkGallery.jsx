@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Use this if using react-router, otherwise remove
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const cardData = [
@@ -209,6 +208,7 @@ const WorkGallery = () => {
                   <img
                     src={card.beforeImageUrl}
                     alt={`Before - ${card.altText}`}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                   />
                   <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-full shadow">
@@ -221,6 +221,7 @@ const WorkGallery = () => {
                   <img
                     src={card.afterImageUrl}
                     alt={`After - ${card.altText}`}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                   />
                   <span className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 text-xs rounded-full shadow">
@@ -267,6 +268,7 @@ const WorkGallery = () => {
                     <img
                       src={selectedCard.beforeImageUrl}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -278,6 +280,7 @@ const WorkGallery = () => {
                     <img
                       src={selectedCard.afterImageUrl}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                 </div>

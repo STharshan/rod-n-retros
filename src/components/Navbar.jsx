@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,6 +60,7 @@ function Navbar() {
             <img
               src="/darklogo.png"
               alt="logo"
+              loading="lazy"
               className="h-20 w-25 block  "
             />
           

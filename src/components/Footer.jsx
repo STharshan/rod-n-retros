@@ -12,6 +12,7 @@ const Footer = () => {
               src="/newlogo.png"
               alt="Rods N Retros Logo"
               className="h-20 w-30"
+              loading="lazy"
             />
             <p className="text-primary-foreground/80 text-pretty">
               Professional classic car restoration services with over 25 years of experience.
@@ -112,8 +113,9 @@ const Footer = () => {
         </div>
 
         {/* Footer Bottom */}
+
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Rods N Retros. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} UNIT 4. All rights reserved.</p>
         </div>
 
         {/* Bottom Bar */}

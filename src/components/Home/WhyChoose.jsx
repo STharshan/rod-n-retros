@@ -1,18 +1,7 @@
-"use client";
-
-import React, { useEffect } from "react";
+import React from "react";
 import { FaClock, FaUsers, FaAward, FaShieldAlt, FaCarSide, FaTools} from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 export default function WhyChooseSection() {
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: false,
-            easing: "ease-out-cubic",
-        });
-    }, []);
 
     return (
         <section className="py-16 bg-[var(--brand-bgSoft)]">

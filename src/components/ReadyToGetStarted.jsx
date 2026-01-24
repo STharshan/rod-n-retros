@@ -16,7 +16,6 @@ const ReadyToGetStarted = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* 📞 Call Button */}
               <a
                 href="tel:+44 7521 224620"
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all shadow-xs h-10 rounded-md px-6 bg-[#8b1a1a] hover:bg-[#8b1a1a]/90 text-white text-lg"
